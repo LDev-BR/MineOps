@@ -1,0 +1,172 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Dynamic Elegant Dark Theme custom properties (Default) */
+  --slate-950-val: #07090D;
+  --slate-900-val: #0B0E14;
+  --slate-850-val: #161B22;
+  --slate-800-val: #161B22;
+  --slate-750-val: #21262D;
+  --slate-705-val: #30363D;
+  --slate-700-val: #30363D;
+  --slate-650-val: #484F58;
+  --slate-600-val: #484F58;
+  --slate-550-val: #8B949E;
+  --slate-500-val: #8B949E;
+  --slate-450-val: #8B949E;
+  --slate-400-val: #8B949E;
+  --slate-300-val: #C9D1D9;
+  --slate-250-val: #E5E7EB;
+  --slate-100-val: #F0F6FC;
+  --text-primary-val: #E5E7EB;
+  --text-muted-val: #8B949E;
+  
+  /* ACCENT & ALERT STYLES WITH PROPER INTEGRATION */
+  --accent-blue: #3B82F6;
+  --accent-blue-hover: #2563EB;
+  --alert-red: #EF4444;
+  --alert-red-bg: rgba(239, 68, 68, 0.15);
+}
+
+body.light-theme {
+  /* Premium Corporate Light Theme properties */
+  --slate-950-val: #F8FAFC; 
+  --slate-900-val: #F1F5F9; 
+  --slate-850-val: #FFFFFF; /* White card surface */
+  --slate-800-val: #E2E8F0; /* Selected card or sidebar hover active */
+  --slate-750-val: #E2E8F0; /* Subtle card border */
+  --slate-705-val: #CBD5E1; 
+  --slate-700-val: #CBD5E1; /* Card border stronger */
+  --slate-650-val: #94A3B8; /* Text muted */
+  --slate-600-val: #64748B; /* Secondary label text */
+  --slate-550-val: #475569; /* Paragraph label */
+  --slate-500-val: #475569; 
+  --slate-450-val: #334155; 
+  --slate-400-val: #334155; 
+  --slate-300-val: #1E293B; /* High density heading text */
+  --slate-250-val: #0F172A; /* Main body text */
+  --slate-105: #020617;
+  --slate-100-val: #020617; /* Strong bold display text */
+  
+  --text-primary-val: #1E293B;
+  --text-muted-val: #64748B;
+
+  --accent-blue: #2563EB;
+  --accent-blue-hover: #1D4ED8;
+  --alert-red: #DC2626;
+  --alert-red-bg: rgba(220, 38, 38, 0.1);
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* Map all Tailind Slate variants dynamically to support global theme switching */
+  --color-slate-950: var(--slate-950-val);
+  --color-slate-900: var(--slate-900-val);
+  --color-slate-850: var(--slate-850-val);
+  --color-slate-800: var(--slate-800-val);
+  --color-slate-750: var(--slate-750-val);
+  --color-slate-705: var(--slate-705-val);
+  --color-slate-700: var(--slate-700-val);
+  --color-slate-650: var(--slate-650-val);
+  --color-slate-600: var(--slate-600-val);
+  --color-slate-550: var(--slate-550-val);
+  --color-slate-500: var(--slate-500-val);
+  --color-slate-450: var(--slate-450-val);
+  --color-slate-400: var(--slate-400-val);
+  --color-slate-350: var(--slate-300-val);
+  --color-slate-300: var(--slate-300-val);
+  --color-slate-250: var(--slate-250-val);
+  --color-slate-200: var(--slate-250-val);
+  --color-slate-105: var(--slate-100-val);
+  --color-slate-100: var(--slate-100-val);
+  
+  /* Interactive Accent: Brilliant Corporate Blue #3B82F6 */
+  --color-primary-50: #ECF3FE;
+  --color-primary-100: #DBE7FF;
+  --color-primary-200: #B3CEFF;
+  --color-primary-300: #7DA8FF;
+  --color-primary-400: #3B82F6;
+  --color-primary-500: #2563EB;
+  --color-primary-600: #1D4ED8;
+  --color-primary-700: #1E3A8A;
+  --color-primary-800: #0F1E4A;
+  --color-primary-900: #070F2B;
+}
+
+/* Material Icons Alignment */
+.material-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+/* Base resets & layouts which adapt nicely to theme selectors */
+body {
+  background-color: var(--slate-900-val) !important;
+  color: var(--text-primary-val) !important;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Clean Custom Scrollbars for High Density Layouts */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--slate-950-val);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--slate-705-val, #30363D);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate-650, #484F58);
+}
+
+/* Tactical layout background map mesh */
+.map-grid {
+  background-image: radial-gradient(var(--slate-700-val) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Table overrides to look beautiful and industrial */
+.industrial-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.industrial-table th {
+  background-color: var(--slate-950-val) !important;
+  border-bottom: 1px solid var(--slate-700-val) !important;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted-val) !important;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.industrial-table td {
+  border-bottom: 1px solid var(--slate-750-val) !important;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--text-primary-val) !important;
+}
+
+/* Custom animation duration resets */
+.animate-ping {
+  animation-duration: 3s;
+}

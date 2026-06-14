@@ -1,0 +1,6 @@
+{
+  "name": "MineOps",
+  "description": "MineOps is a production-grade enterprise frontend prototype for mining operations management, helping manage assets, teams, work orders, geospatial tracking, and operational analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
