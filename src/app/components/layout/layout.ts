@@ -286,8 +286,8 @@ import { TranslationService } from '../../services/translation.service';
 
         <!-- High density scrollable main routing view panel -->
         <main class="flex-1 bg-slate-900 p-3 md:p-6 lg:p-8 flex flex-col gap-4 md:gap-5 lg:gap-6"
-              [class.overflow-hidden]="isRouteActive('/dashboard')"
-              [class.overflow-y-auto]="!isRouteActive('/dashboard')">
+              [class.overflow-hidden]="isRouteActive('/dashboard') || isRouteActive('/settings') || isRouteActive('/equipment')"
+              [class.overflow-y-auto]="!isRouteActive('/dashboard') && !isRouteActive('/settings') && !isRouteActive('/equipment')">
           <router-outlet />
         </main>
       </div>

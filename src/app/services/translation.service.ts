@@ -14,7 +14,10 @@ export class TranslationService {
 
   private detectSystemLanguage() {
     if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
-      const saved = localStorage.getItem('mineops_lang') as LangType;
+      let saved: LangType | null = null;
+      if (typeof localStorage !== 'undefined') {
+        saved = localStorage.getItem('mineops_lang') as LangType;
+      }
       if (saved === 'pt-BR' || saved === 'en-US') {
         this.activeLang.set(saved);
         return;
@@ -30,7 +33,7 @@ export class TranslationService {
 
   public setLanguage(lang: LangType) {
     this.activeLang.set(lang);
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       localStorage.setItem('mineops_lang', lang);
     }
   }

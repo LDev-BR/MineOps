@@ -14,7 +14,10 @@ export class ThemeService {
 
   private initTheme() {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('mineops_theme') as ThemeType;
+      let saved: ThemeType | null = null;
+      if (typeof localStorage !== 'undefined') {
+        saved = localStorage.getItem('mineops_theme') as ThemeType;
+      }
       if (saved === 'dark' || saved === 'light' || saved === 'system') {
         this.activeTheme.set(saved);
       } else {
@@ -23,18 +26,20 @@ export class ThemeService {
       this.applyTheme();
 
       // Listen to OS theme changes for full system theme synchronization
-      const media = window.matchMedia('(prefers-color-scheme: dark)');
-      media.addEventListener('change', () => {
-        if (this.activeTheme() === 'system') {
-          this.applyTheme();
-        }
-      });
+      if (typeof window.matchMedia === 'function') {
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        media.addEventListener('change', () => {
+          if (this.activeTheme() === 'system') {
+            this.applyTheme();
+          }
+        });
+      }
     }
   }
 
   public setTheme(theme: ThemeType) {
     this.activeTheme.set(theme);
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       localStorage.setItem('mineops_theme', theme);
     }
     this.applyTheme();
@@ -49,7 +54,9 @@ export class ThemeService {
     if (theme === 'light') {
       useLight = true;
     } else if (theme === 'system') {
-      useLight = !window.matchMedia('(prefers-color-scheme: dark)').matches;
+      useLight = typeof window.matchMedia === 'function'
+        ? !window.matchMedia('(prefers-color-scheme: dark)').matches
+        : false;
     }
 
     const body = document.body;
@@ -68,7 +75,9 @@ export class ThemeService {
     if (t === 'light') return true;
     if (t === 'dark') return false;
     if (typeof window !== 'undefined') {
-      return !window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return typeof window.matchMedia === 'function'
+        ? !window.matchMedia('(prefers-color-scheme: dark)').matches
+        : false;
     }
     return false;
   });
